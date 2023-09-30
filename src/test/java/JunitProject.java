@@ -31,10 +31,10 @@ public class JunitProject {
         formFieldList.get(0).sendKeys("Anwar Hossen");
         //Phone Number
         formFieldList.get(1).sendKeys("01758741239");
-        scroll(0, 500);
+        Utils.doScroll(driver, 0,500);
         //Age
         driver.findElement(By.xpath("//label[normalize-space()='20-30']")).click();
-        scroll(0, 500);
+        Utils.doScroll(driver,0,500);
 
         //(DOB)Date of Birth
         formFieldList.get(2).sendKeys(Keys.CONTROL + "a");
@@ -43,18 +43,18 @@ public class JunitProject {
 
         //Email
         formFieldList.get(3).sendKeys("anwarhossen123@gmail.com");
-        scroll(0, 500);
+        Utils.doScroll(driver,0,500);
 
         //About Yourself
         formFieldList.get(4).sendKeys("My name is Anwar Hossen, I am 25 years old and I recently graduated from University X with a B.Sc. in Computer Science and Engineering. While there, I learned a lot of theory in subjects. I have worked hard in my education and now I am ready to apply my knowledge into practice. Now, I am looking to leverage everything I have learned in university and get some hands-on work experience.");
-        scroll(0, 500);
-        scroll(0, 300);
+        Utils.doScroll(driver,0,500);
+        Utils.doScroll(driver,0,300);
 
         //Upload File
         driver.findElement(By.id("edit-uploadocument-upload")).sendKeys(System.getProperty("user.dir") + "/src/test/resources/Bug Report.pdf");
 
         //Click on Check Box
-        scroll(0, 1000);
+        Utils.doScroll(driver,0,1000);
         Thread.sleep(2000);
         driver.findElement(By.id("edit-age")).click();
 
@@ -69,10 +69,6 @@ public class JunitProject {
         Assertions.assertEquals(actualMessage, expectedMessage);
     }
 
-    public void scroll(int x, int y) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(" + x + "," + y + ")");
-    }
 
     @AfterAll
     public void browserQuit() {
